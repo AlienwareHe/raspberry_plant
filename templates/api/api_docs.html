@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+{% extends "/layout.html" %}
+
+{% block title %}API - {{ api['name'] }}{% endblock %}
+
+{% block breadcrumb_nav %}
+    <li><a href="{{ url_for('index') }}">Api Root</a></li>
+    <li><a href="{{ api['url'] }}">{{ api['name'] }}</a></li>
+{% endblock %}
+
+{% block page_header %}
+    <h1>{{ api['name'] | upper }}</h1>
+{% endblock %}
+
+{% block content_area %}
+<pre>
+<b>Target:</b><span><a href="{{ api['url'] }}">{{ api['url'] }}</a></span>
+<b>Allow :</b> <span>{{ api['methods'] }}</span>
+<b>Usage :</b> <span>{{ api['doc'] }}</span>
+</pre>
+{% endblock %}

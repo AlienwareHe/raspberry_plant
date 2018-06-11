@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+{% extends "/layout.html" %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-table/bootstrap-table.css') }}">
+{% endblock %}
+
+{% block title %}植物生长模型中心{% endblock %}
+
+{% block breadcrumb_nav %}
+    <li><a href="{{ url_for('config') }}">植物生长模型中心</a></li>
+{% endblock %}
+
+{% block content_area %}
+<div>
+    <div id="toolbar">
+        <button class="btn btn-success" onclick="location.href='/addPlantModel.html'">新增</button>
+        <button class="btn btn-warning" onclick="delSelected()">删除</button>
+    </div>
+    <table id="plantModelTable"></table>
+</div>
+
+{# 编辑的模态窗口 #}
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">编辑植物生长模型</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="editRasperryConfig()">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static',filename='bootstrap-table/bootstrap-table.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='bootstrap-table/bootstrap-table-zh-CN.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='bootstrap-table/x-editable/bootstrap-editable.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='bootstrap-table/bootstrap-table-edittable.js')}}"></script>
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/plantmodel.js')}}"></script>
+{% endblock %}

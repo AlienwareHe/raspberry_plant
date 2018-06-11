@@ -1,0 +1,91 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-table/switch/bootstrap-switch-min.css') }}">
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script type="text/javascript"
+        src="{{ url_for('static',filename='bootstrap-table/switch/bootstrap-switch.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/config.js')}}"></script>
+{% endblock %}
+
+
+{% block content %}
+<div id="wrap">
+    <!-- Begin nav bar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">树莓派植物生长评估系统管理中心</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">API文档</a></li>
+                    <li class="active"><a href="{{ url_for('listConfig') }}">配置中心</a></li>
+                    <li class="active"><a href="{{ url_for('plantModelIndex') }}">生长模型中心</a></li>
+                    <li class="active"><a href="{{ url_for('sensors') }}">传感器中心</a></li>
+                </ul>
+                <form class="navbar-form pull-right">
+                    <input type="checkbox" name="my-checkbox" checked>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin page content -->
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            {% block breadcrumb_nav %}{% endblock %}
+        </ul>
+        <div class="page-header">
+            {% block page_header %}{% endblock %}
+        </div>
+        {# 编辑的模态窗口 #}
+        <div class="modal fade" id="runModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">树莓派启动属性设置</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">植物种类</label>
+                                <div class="controls col-sm-4">
+                                    <select class="form-control col-sm-4" id="plantTypeDropMenu1">
+                                        <option value="">请选择...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeRunMOdal()">关闭</button>
+                            <button type="button" class="btn btn-primary" onclick="submitPlantType()">确认启动</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+        {% block content_area %}{% endblock %}
+    </div>
+
+</div>
+<div id="footer">
+    <div class="container">
+        <p class="text-muted credit">欢迎使用树莓派植物生长评估系统管理中心</p>
+    </div>
+</div>
+{% endblock %}

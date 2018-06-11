@@ -1,0 +1,120 @@
+# -*- coding: utf-8 -*-
+{% extends "/layout.html" %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-table/bootstrap-table.css') }}">
+{% endblock %}
+
+{% block title %}植物生长模型中心{% endblock %}
+
+{% block breadcrumb_nav %}
+<li><a href="{{ url_for('config') }}">植物生长模型中心</a></li>
+{% endblock %}
+
+{% block content_area %}
+<div align="center" style="width: 60%">
+    <form role="form" class="form-horizontal col-sm-pull-3" id="plantModelForm">
+        <fieldset>
+            <div class="form-group">
+                <label class="control-label col-sm-6">植物生长类型</label>
+                <div class="controls col-sm-6">
+                    <select class="form-control col-sm-6" id="plantTypeDropMenu2">
+
+                    </select>
+                </div>
+                <input type="hidden" id="typeId" name="typeId" value="-1"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_low">空气最低湿度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="airHum_low"
+                           name="airHum_low">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">空气最高湿度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="airHum_high"
+                           name="airHum_high">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">空气最低温度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="airTemp_low"
+                           name="airTemp_low">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">空气最高温度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="airTemp_high"
+                           name="airTemp_high">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">土壤最低湿度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="soilHum_low"
+                           name="soilHum_low">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">土壤最高湿度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="soilHum_high"
+                           name="soilHum_high">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">最低光照强度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="light_low"
+                           name="light_low">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">最高光照强度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="light_high"
+                           name="light_high">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">最低CO2浓度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="co2_low"
+                           name="co2_low">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-6" for="airHum_high">最高CO2浓度</label>
+                <div class="controls col-sm-6">
+                    <input type="text" placeholder="" class="form-control col-sm-6" id="co2_high"
+                           name="co2_high">
+                </div>
+            </div>
+
+            <div class="form-group">
+                    <button type="button" class="btn btn-primary col-sm-2 pull-right" onclick="submitPlantModel()">提交</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static',filename='js/addPlantModel.js') }}"></script>
+{% endblock %}

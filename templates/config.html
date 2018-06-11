@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+{% extends "/layout.html" %}
+
+{% block title %}树莓派配置列表{% endblock %}
+
+{% block breadcrumb_nav %}
+    <li><a href="{{ url_for('listConfig') }}">树莓派配置列表</a></li>
+{% endblock %}
+
+{% block content_area %}
+<table class="table table-bordered">
+    <tr>
+        <th>配置项</th>
+        <th>属性值</th>
+        <th>操作</th>
+    </tr>
+    {% for key in config %}
+    <tr>
+        <td>{{ key }}</td>
+        <td>{{ config[key] }}</td>
+        <td> <a href="#" onclick="toggleEditModal('{{ key }}')">编辑</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{# 编辑的模态窗口 #}
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">编辑树莓派属性</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editKey" value="" class="form-control">
+                <input type="text" id="editInputValue" class="form-control"/></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="editRasperryConfig()">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static',filename='js/config.js')}}"></script>
+{% endblock %}
