@@ -23,7 +23,7 @@ class PlantModelSchema(Schema):
     airhum = fields.String(20)
     soilhumi = fields.String(20)
     light = fields.String(20)
-
+    growStatus = fields.String(20)
 
     # 将dict转化为对象需要自己实现，然后加上注解
     @post_load()
@@ -43,7 +43,7 @@ class PlantModelDTO():
         self.airhum = str(plantModel.airHumidity_low) +'~' + str(plantModel.airHumidity_high)
         self.soilhumi = str(plantModel.soilHumidity_low)+'~'+str(plantModel.soilHumidity_high)
         self.light = str(plantModel.lightIntensity_low) +'~'+str(plantModel.lightIntensity_high)
-
+        self.growStatus = plantModel.typeInfo.growStatus
         return self
 
     def __init__(self,id=-1,type='',airtemp='',airhum='',soilhumi='',light=''):

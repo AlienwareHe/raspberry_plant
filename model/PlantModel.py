@@ -85,10 +85,12 @@ class PlantType(Base):
 
     id = Column('TypeID',Integer,primary_key=True,autoincrement=True)
     type = Column('type',String(50))
+    growStatus = Column('grow_status',String(50))
 
     def __init__(self,plantid='',planttype=''):
         self.id = plantid
         self.type = planttype
+        self.growStatus = growStatus
 
 class sensor(Base):
     __tablename__ = 'sensor'

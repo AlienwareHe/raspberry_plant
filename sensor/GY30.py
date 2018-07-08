@@ -1,4 +1,4 @@
-#!/usr/bin/python
+﻿#!/usr/bin/python
 # -*- coding=utf-8 -*-
 from sensor.Sensor import Sensor
 import smbus

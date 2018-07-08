@@ -22,7 +22,9 @@ _BUZZER_ISRUNNING = False
 _DH11_ISRUNNING = False
 _YL69_ISRUNNING = False
 
-
+# 蜂鸣器蜂鸣周期与持续时间
+_BUZZER_periods = 3
+_BUZZER_time = 10
 
 class global_var:
     BUZZER_WORK_STATE = True

@@ -38,8 +38,8 @@ $('#sensorTable').bootstrapTable({
         field: 'name',
         title: '传感器名称'
     }, {
-        field: 'nickname',
-        title: '全名'
+        field: 'class_name',
+        title: '类名'
     },{
         field: 'isActive',
         title: '有效状态'

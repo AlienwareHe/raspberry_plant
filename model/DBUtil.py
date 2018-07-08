@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, or_, func
 from sqlalchemy.orm import sessionmaker
 
 # 初始化数据库连接:
-engine = create_engine('mysql+pymysql://root:123456@192.168.2.153:3306/raspberry?charset=utf8')
+engine = create_engine('mysql+pymysql://root:123456@10.10.10.216:3306/raspberry?charset=utf8')
 # engine = create_engine('mysql+pymysql://root:123456@127.0.0.1:3306/raspberry?charset=utf8')
 Session = sessionmaker(bind=engine)
 # 如果表不存在则创建表

@@ -43,7 +43,10 @@ $('#plantModelTable').bootstrapTable({
         title: 'ID'
     },{
         field: 'type',
-        title: '植物类型',
+        title: '植物类型'
+    },{
+        field: 'growStatus',
+        title: '生长阶段'
     },{
         field: 'airtemp',
         title: '空气温度范围',
